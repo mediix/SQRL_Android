@@ -1,4 +1,4 @@
-package blankapplication;
+package pcprincess.blankapplication;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
