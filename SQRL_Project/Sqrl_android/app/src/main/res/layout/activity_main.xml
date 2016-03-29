@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:textSize="40dp"
+            android:text="SQRL"
+            android:gravity="center"
+            android:textColor="#FFF"/>
+        <ImageView
+            android:id="@+id/mainpicture"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/sqrl_logo"/>
+
+        <Button
+            android:id="@+id/sign_in"
+            android:text="SIGN IN"
+            android:textColor="#000000"
+            android:layout_width="125dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/mainpicture"
+            android:background="#FFF"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="3dp"/>
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="125dp"
+            android:layout_height="45dp"
+            android:layout_toRightOf="@+id/sign_in"
+            android:layout_below="@+id/mainpicture"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp"
+            android:background="#FFF"
+            android:text="Register"
+            android:textColor="#000000"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
