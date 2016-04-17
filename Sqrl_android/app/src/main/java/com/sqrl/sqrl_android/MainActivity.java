@@ -9,6 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -54,6 +64,55 @@ public class MainActivity extends AppCompatActivity {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
 
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://requestb.in/wfou7pwf";
+        Log.d("http test", "testing volley");
 
+        // Request a string response from the provided URL.
+        /*StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    public void onResponse(String response) {
+                        // Display the frist 500 characters of the response string.
+                        if(response.length() > 500) {
+                            Log.d("response", "Response is: " + response.substring(0, 500));
+                        } else {
+                            Log.d("response", "Response is: " + response);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("response err", "that didn't work!");
+                    }
+                });
+                */
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    public void onResponse(String response) {
+                        // Display the frist 500 characters of the response string.
+                        if(response.length() > 500) {
+                            Log.d("response", "Response is: " + response.substring(0, 500));
+                        } else {
+                            Log.d("response", "Response is: " + response);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("response err", "that didn't work!");
+                    }
+            }
+        ) {
+            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+              Map<String, String> params = new HashMap<String, String>();
+                params.put("param1", "post param 1");
+                params.put("param2", "post param 2");
+                return params;
+            };
+        };
+
+        queue.add(stringRequest);
+        Log.d("http test", "tested volley");
     }
 }
