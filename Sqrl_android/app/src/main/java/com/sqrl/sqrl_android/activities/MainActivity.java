@@ -1,4 +1,4 @@
-package com.sqrl.sqrl_android;
+package com.sqrl.sqrl_android.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.sqrl.sqrl_android.R;
 
 import java.util.HashMap;
 import java.util.Map;
