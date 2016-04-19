@@ -17,6 +17,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.sqrl.sqrl_android.R;
 
+import org.abstractj.kalium.NaCl;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void httpSend(View vew) {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
+        
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://requestb.in/wfou7pwf";
