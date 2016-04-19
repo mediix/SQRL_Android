@@ -65,8 +65,10 @@ public class MainActivity extends AppCompatActivity {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
 
+        
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://requestb.in/wfou7pwf";
+        String url ="http://requestb.in/1gftdmg1";
         Log.d("http test", "testing volley");
 
         // Request a string response from the provided URL.
