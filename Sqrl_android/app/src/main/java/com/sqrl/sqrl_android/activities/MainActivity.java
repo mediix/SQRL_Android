@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.sqrl.sqrl_android.R;
+import com.sqrl.sqrl_android.helpers.BytesToHex;
 
 import org.abstractj.kalium.NaCl;
 
@@ -66,10 +67,25 @@ public class MainActivity extends AppCompatActivity {
     public void httpSend(View vew) {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
-        
+
+        byte[] b10 = new byte[10];
+        byte[] b20 = new byte[20];
+        byte[] b30 = new byte[30];
+        byte[] b32 = new byte[32];
+
+        NaCl.sodium().randombytes(b10, 10);
+        NaCl.sodium().randombytes(b20, 20);
+        NaCl.sodium().randombytes(b30, 30);
+        NaCl.sodium().randombytes(b32, 32);
+
+        Log.d("NaCl", "Length: " + b10.length + " con:" + new BytesToHex().bytesToHex(b10));
+        Log.d("NaCl", "Length: " + b20.length + " con:" + new BytesToHex().bytesToHex(b20));
+        Log.d("NaCl", "Length: " + b30.length + " con:" + new BytesToHex().bytesToHex(b30));
+        Log.d("NaCl", "Length: " + b32.length + " con:" + new BytesToHex().bytesToHex(b32));
+
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://requestb.in/wfou7pwf";
+        String url ="http://requestb.in/1gftdmg1";
         Log.d("http test", "testing volley");
 
         // Request a string response from the provided URL.
