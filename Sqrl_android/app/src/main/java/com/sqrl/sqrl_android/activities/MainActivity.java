@@ -18,7 +18,10 @@ import com.android.volley.toolbox.Volley;
 import com.sqrl.sqrl_android.R;
 
 import org.abstractj.kalium.NaCl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("http test", "http test button pressed");
         
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://requestb.in/wfou7pwf";
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
         Log.d("http test", "testing volley");
 
         // Request a string response from the provided URL.
@@ -91,7 +94,19 @@ public class MainActivity extends AppCompatActivity {
                 });
                 */
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        final JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("operation", "generate");
+            jsonObject.put("param1", "post param 1");
+        } catch (JSONException e) {
+            Log.d("JSON", "Json error");
+        }
+
+        Log.d("JSON", jsonObject.toString());
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     public void onResponse(String response) {
                         // Display the frist 500 characters of the response string.
@@ -108,15 +123,24 @@ public class MainActivity extends AppCompatActivity {
                     }
             }
         ) {
-            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
-              Map<String, String> params = new HashMap<String, String>();
-                params.put("param1", "post param 1");
-                params.put("param2", "post param 2");
-                return params;
+//            protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
+//              Map<String, String> params = new HashMap<String, String>();
+//                params.put("operation", "generate");
+//                params.put("param1", "post param 1");
+//                params.put("param2", "post param 2");
+//                return params;
+//            };
+            public byte[] getBody() {
+                try {
+                    return jsonObject.toString().getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    // not supposed to happen
+                    return null;
+                }
             };
         };
 
-        queue.add(stringRequest);
+        queue.add(request);
         Log.d("http test", "tested volley");
     }
 }
