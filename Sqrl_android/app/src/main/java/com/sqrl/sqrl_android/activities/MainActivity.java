@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -68,46 +69,12 @@ public class MainActivity extends AppCompatActivity {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
 
-        byte[] b10 = new byte[10];
-        byte[] b20 = new byte[20];
-        byte[] b30 = new byte[30];
-        byte[] b32 = new byte[32];
-
-        NaCl.sodium().randombytes(b10, 10);
-        NaCl.sodium().randombytes(b20, 20);
-        NaCl.sodium().randombytes(b30, 30);
-        NaCl.sodium().randombytes(b32, 32);
-
-        Log.d("NaCl", "Length: " + b10.length + " con:" + new BytesToHex().bytesToHex(b10));
-        Log.d("NaCl", "Length: " + b20.length + " con:" + new BytesToHex().bytesToHex(b20));
-        Log.d("NaCl", "Length: " + b30.length + " con:" + new BytesToHex().bytesToHex(b30));
-        Log.d("NaCl", "Length: " + b32.length + " con:" + new BytesToHex().bytesToHex(b32));
-
-
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://requestb.in/1gftdmg1";
+        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
+//        String url = "http://requestb.in/13gxnmw1";
         Log.d("http test", "testing volley");
 
-        // Request a string response from the provided URL.
-        /*StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    public void onResponse(String response) {
-                        // Display the frist 500 characters of the response string.
-                        if(response.length() > 500) {
-                            Log.d("response", "Response is: " + response.substring(0, 500));
-                        } else {
-                            Log.d("response", "Response is: " + response);
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("response err", "that didn't work!");
-                    }
-                });
-                */
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     public void onResponse(String response) {
                         // Display the frist 500 characters of the response string.
@@ -126,10 +93,23 @@ public class MainActivity extends AppCompatActivity {
         ) {
             protected Map<String, String> getParams() throws com.android.volley.AuthFailureError {
               Map<String, String> params = new HashMap<String, String>();
-                params.put("param1", "post param 1");
-                params.put("param2", "post param 2");
+                params.put("client", "post param 1");
+                params.put("server", "post param 2");
+                params.put("ids", "post param 3");
+                params.put("pids", "post param 4");
+                params.put("urs", "post param 5");
                 return params;
             };
+             public Map<String, String> getHeaders() throws AuthFailureError {
+                 Map<String, String> headers = new HashMap<String, String>();
+                 headers.put("Content-Type", "application/x-www-form-urlencoded");
+                 return headers;
+             }
+
+//             public byte[] getBody() throws AuthFailureError {
+//                 String httpPostBody="param1=parampost1";
+//                 return httpPostBody.getBytes();
+//             }
         };
 
         queue.add(stringRequest);
