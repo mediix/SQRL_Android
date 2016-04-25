@@ -1,4 +1,4 @@
-package com.sqrl.sqrl_android;
+package com.sqrl.sqrl_android.helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
