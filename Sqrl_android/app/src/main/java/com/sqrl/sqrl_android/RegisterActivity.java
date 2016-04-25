@@ -18,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Button register = (Button) findViewById(R.id.commitRegisterButton);
+
         final EditText fname = (EditText) findViewById(R.id.firstNameTextBox);
         final EditText lname = (EditText) findViewById(R.id.lastNameTextBox);
         final EditText pword = (EditText) findViewById(R.id.passwordTextBox);
@@ -38,9 +39,11 @@ public class RegisterActivity extends AppCompatActivity {
                 //myDb.addUserLastName(lname);
                 //myDb.addUserPassword(pword);
                 myDb = new DatabaseHelper(this, null, null, 1);
+                // context:this, dbName: Users.db, Cursorfactory:factory, version:1
                 //printDatabase();
             }
         });
+
 
 
     }

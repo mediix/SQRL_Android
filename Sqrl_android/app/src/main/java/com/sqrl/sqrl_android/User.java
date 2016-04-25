@@ -7,7 +7,7 @@ public class User {
     static String lastName;
     static String password;
 
-
+    // public User() {};
 
     public  void setFirstName(String fname){
         this.firstName = fname;
