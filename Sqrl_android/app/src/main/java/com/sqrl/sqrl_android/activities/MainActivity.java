@@ -18,7 +18,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.sqrl.sqrl_android.R;
+import com.sqrl.sqrl_android.data.ClientInfoParam;
+import com.sqrl.sqrl_android.helpers.AuthenticationPostBody;
 import com.sqrl.sqrl_android.helpers.BytesToHex;
+import com.sqrl.sqrl_android.interfaces.NameValueBase64;
 
 import org.abstractj.kalium.NaCl;
 import org.json.JSONException;
@@ -26,6 +29,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.jar.Attributes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,26 +76,21 @@ public class MainActivity extends AppCompatActivity {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
 
-        JSONObject clientData = new JSONObject();
-        try {
-            clientData.put("client", "client post data");
-            clientData.put("server", "server post data");
-        }catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //Example preparing and sending client login request
+        ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
+        AuthenticationPostBody authData = new AuthenticationPostBody(client, "parserver", "parids", "parpids", "parurs");
 
+        JSONObject authDataJson = authData.getJsonObject();
 
+//        JSONObject authData = new JSONObject();
 
         RequestQueue queue = Volley.newRequestQueue(this);
 //        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
         String url = "http://putsreq.com/z6KTTHEz6bDCe0St4ZIF";
-        Log.d("http test", "testing volley");
 
-//         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, clientData,
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, authDataJson,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
-                        // Display the frist 500 characters of the response string.
                         Log.d("Volley", "Response is: " + response);
                     }
                 }, new Response.ErrorListener() {
@@ -102,6 +101,5 @@ public class MainActivity extends AppCompatActivity {
         );
 
         queue.add(stringRequest);
-        Log.d("http test", "tested volley");
     }
 }

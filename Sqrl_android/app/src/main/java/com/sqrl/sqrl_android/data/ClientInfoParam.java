@@ -29,12 +29,12 @@ public class ClientInfoParam extends NameValueBase64{
     private NameValueBase64 suk;
     private NameValueBase64 vuk;
 
-    ClientInfoParam( String ver, String cmd, String idk, String pidk, String suk, String vuk) {
+    public ClientInfoParam( String ver, String cmd, String idk, String pidk, String suk, String vuk) {
         super("client", "");    // allow instantiation of the client class,
                                 // then fill in the data after initializing data
 
         this.ver = new NameValueBase64("ver", ver){};
-        this.cmd = new NameValueBase64("ver", cmd) {};
+        this.cmd = new NameValueBase64("cmd", cmd) {};
         this.idk = new NameValueBase64("idk", idk) {};
         this.pidk = new NameValueBase64("pidk", pidk) {};
         this.suk = new NameValueBase64("suk", suk) {};
