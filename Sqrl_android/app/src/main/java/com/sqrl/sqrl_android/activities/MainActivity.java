@@ -80,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
         AuthenticationPostBody authData = new AuthenticationPostBody(client, "parserver", "parids", "parpids", "parurs");
 
+        Log.d("main: ", "Client: "+ client.getValueBase64url());
+
         JSONObject authDataJson = authData.getJsonObject();
 
 //        JSONObject authData = new JSONObject();
