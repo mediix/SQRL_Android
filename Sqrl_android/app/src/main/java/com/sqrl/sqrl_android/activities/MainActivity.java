@@ -17,7 +17,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.sqrl.sqrl_android.OpeningScreenActivity;
 import com.sqrl.sqrl_android.R;
+import com.sqrl.sqrl_android.RegisterActivity;
 import com.sqrl.sqrl_android.data.ClientInfoParam;
 import com.sqrl.sqrl_android.helpers.AuthenticationPostBody;
 import com.sqrl.sqrl_android.helpers.BytesToHex;
@@ -38,13 +40,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Button SignInButton = (Button) findViewById(R.id.sign_in);
         Button RegisterButton = (Button) findViewById(R.id.register_button);
 
         RegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent myintent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(myintent);
+            }
+        });
+        SignInButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent myintent = new Intent(getApplicationContext(), OpeningScreenActivity.class);
                 startActivity(myintent);
             }
         });
