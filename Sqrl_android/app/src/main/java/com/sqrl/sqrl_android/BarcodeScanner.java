@@ -141,7 +141,9 @@ public class BarcodeScanner extends AppCompatActivity {
                             "<<<<Bar Code>>> " + sym.getData());
                     String scanResult = sym.getData().trim();
 
+
                     showAlertDialog(scanResult);
+                    showAlertDialog("testing");
 
                   /*  Toast.makeText(BarcodeScanner.this, scanResult,
                             Toast.LENGTH_SHORT).show();*/

@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.sqrl.sqrl_android.LogInActivity;
 import com.sqrl.sqrl_android.OpeningScreenActivity;
 import com.sqrl.sqrl_android.R;
 import com.sqrl.sqrl_android.RegisterActivity;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SignInButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(getApplicationContext(), OpeningScreenActivity.class);
+                Intent myintent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(myintent);
             }
         });
@@ -105,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("Volley", "Response is: " + response);
                     }
                 }, new Response.ErrorListener() {
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("response err", "that didn't work!");
-                    }
+            public void onErrorResponse(VolleyError error) {
+                Log.d("response err", "that didn't work!");
             }
+        }
         );
 
         queue.add(stringRequest);
