@@ -48,7 +48,6 @@
             android:background="#FFF"
             android:text="Register"
             android:textColor="#000000"/>
-
         <Button
             android:id="@+id/button"
             android:text="HTTP Test"
@@ -61,7 +60,6 @@
             android:layout_marginRight="3dp"
             android:layout_below="@+id/sign_in"
             android:onClick="httpSend"/>
-
 
     </RelativeLayout>
 

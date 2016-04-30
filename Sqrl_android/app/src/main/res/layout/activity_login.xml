@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#000000">
+        <TextView
+            android:id="@+id/LoginText"
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            android:text="LOG IN"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"/>
+        <RelativeLayout
+            android:id="@+id/relativeLayoutForLogingIn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/LoginText"
+            android:background="#FFF">
+
+            <EditText
+                android:id="@+id/loginUsernameText"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="USERNAME"
+                android:textColorHint="#000"
+                android:gravity="center"/>
+            <EditText
+                android:id="@+id/loginPasswordText"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="PASSWORD"
+                android:textColorHint="#000"
+                android:gravity="center"
+                android:layout_below="@id/loginUsernameText"
+                android:layout_marginTop="3dp"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/commitLogInButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Sign In"
+            android:textColor="#000"
+            android:background="#fff"
+            android:layout_below="@id/relativeLayoutForLogingIn"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop= "10dp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
