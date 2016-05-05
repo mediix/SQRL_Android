@@ -52,6 +52,7 @@
                 android:textColorHint="#000"
                 android:textColor="#000"
                 android:gravity="center"
+                android:inputType="textPassword"
                 android:layout_below="@+id/lastNameTextBox"  />
             <EditText
                 android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                 android:id="@+id/confirmPasswordTextBox"
                 android:hint="Confirm Password"
                 android:textColorHint="#000"
+                android:inputType="textPassword"
                 android:textColor="#000"
                 android:gravity="center"
                 android:layout_below="@id/passwordTextBox"/>

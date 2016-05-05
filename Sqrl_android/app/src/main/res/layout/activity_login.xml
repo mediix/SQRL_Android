@@ -29,6 +29,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:hint="USERNAME"
+                android:textColor="#000"
                 android:textColorHint="#000"
                 android:gravity="center"/>
             <EditText
@@ -37,6 +38,8 @@
                 android:layout_height="50dp"
                 android:hint="PASSWORD"
                 android:textColorHint="#000"
+                android:textColor="#000"
+                android:inputType="textPassword"
                 android:gravity="center"
                 android:layout_below="@id/loginUsernameText"
                 android:layout_marginTop="3dp"/>

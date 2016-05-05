@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.sqrl.sqrl_android.LogInActivity;
 import com.sqrl.sqrl_android.OpeningScreenActivity;
 import com.sqrl.sqrl_android.R;
 import com.sqrl.sqrl_android.RegisterActivity;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SignInButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(getApplicationContext(), OpeningScreenActivity.class);
+                Intent myintent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(myintent);
             }
         });
@@ -81,36 +82,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void httpSend(View vew) {
-        //Test the Volley HTTP library to send data
-        Log.d("http test", "http test button pressed");
 
-        //Example preparing and sending client login request
-        ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
-        AuthenticationPostBody authData = new AuthenticationPostBody(client, "parserver", "parids", "parpids", "parurs");
-
-        Log.d("main: ", "Client: "+ client.getValueBase64url());
-
-        JSONObject authDataJson = authData.getJsonObject();
-
-//        JSONObject authData = new JSONObject();
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
-        String url = "http://putsreq.com/z6KTTHEz6bDCe0St4ZIF";
-
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, authDataJson,
-                new Response.Listener<JSONObject>() {
-                    public void onResponse(JSONObject response) {
-                        Log.d("Volley", "Response is: " + response);
-                    }
-                }, new Response.ErrorListener() {
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("response err", "that didn't work!");
-                    }
-            }
-        );
-
-        queue.add(stringRequest);
-    }
 }
