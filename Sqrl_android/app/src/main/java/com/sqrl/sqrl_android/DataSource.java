@@ -39,7 +39,10 @@ public class DataSource {
     public void insertUser(User user){
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_FIRSTNAME,user.getFirstName());
-        mDatabase.insert(DatabaseHelper.TABLE_USERS,null,values);
+        values.put(DatabaseHelper.COLUMN_LASTNAME,user.getLastName());
+        values.put(DatabaseHelper.COLUMN_PASSWORD,user.getPassword());
+        mDatabase.insert(DatabaseHelper.TABLE_USERS, null, values);
+
     }
 
 

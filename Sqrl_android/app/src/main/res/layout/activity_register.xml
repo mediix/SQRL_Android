@@ -25,15 +25,18 @@
             android:layout_height="wrap_content"
             android:background="#fff">
 
-
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/firstNameTextBox"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="First Name"
                     android:textColorHint="#000000"
+                    android:textCursorDrawable = "@null"
                     android:textColor="#000"
                     android:gravity="center" />
+
             <EditText
                 android:id="@+id/lastNameTextBox"
                 android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.sqrl.sqrl_android.activities.MainActivity;
 
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
         mDataSource = new DataSource(RegisterActivity.this);
         try {
             mDataSource.open();
@@ -52,14 +54,14 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myintent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity((myintent));
 
                 User newUser = new User();
-                newUser.setFirstName(fname.toString());
-                newUser.setLastName(lname.toString());
-                newUser.setPassword(pword.toString());
+                newUser.setFirstName(fname.getText().toString());
+                newUser.setLastName(lname.getText().toString());
+                newUser.setPassword(pword.getText().toString());
 
                 mDataSource.insertUser(newUser);
+                startActivity((myintent));
             }
 
 

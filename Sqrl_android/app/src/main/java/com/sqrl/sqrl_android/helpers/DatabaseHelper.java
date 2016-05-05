@@ -17,12 +17,22 @@ import java.sql.Struct;
         public static final String TABLE_USERS = "USERS";
         public static final String COLUMN_ID = "_ID";
         public static final String COLUMN_FIRSTNAME = "FIRST_NAME";
+        public static final String COLUMN_LASTNAME = "LAST_NAME";
+        public static final String COLUMN_PASSWORD = "PASSWORD";
 
-        private static final String DB_NAME = "Databaseeee.db";
+        private static final String DB_NAME = "Databaseeeezzz.db";
         private static final int DB_VERSION = 1;
         private static final String DB_CREATE =
-                "CREATE TABLE " + TABLE_USERS + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_FIRSTNAME + "TEXT)";
+               // "CREATE TABLE " + TABLE_USERS + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //COLUMN_FIRSTNAME + " TEXT)";
+                "CREATE TABLE " + TABLE_USERS + "(" +
+                                COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                                COLUMN_FIRSTNAME + " TEXT, " +
+                                COLUMN_LASTNAME + " TEXT, " +
+                                COLUMN_PASSWORD + " TEXT)";
+
+
+
 
 
         public DatabaseHelper(Context context) {
