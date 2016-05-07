@@ -135,11 +135,20 @@ public class MainActivity extends AppCompatActivity {
         byte[] pk = new byte[32];
         NaCl.sodium().crypto_sign_ed25519_seed_keypair(pk, sk, imk);
         Log.d("Test", "SK:" + new BytesToHex().bytesToHex(sk));
-        Log.d("Test", "PK:" + new BytesToHex().bytesToHex(pk) );
+        Log.d("Test", "PK:" + new BytesToHex().bytesToHex(pk));
 
-        // TUL-5
-        String msgTosign = client.getValueBase64url() + postData.server.getNameValueBase64url();
-        NaCl.sodium().crypto_sign_ed25519();
+        // TUL-5, signing is 64-bytes
+        String msgToSign = client.getValueBase64url() + postData.server.getValueBase64url();
+        int msgLength = msgToSign.length();
+        Log.d("Test", "MSG:" + msgToSign);
+        Log.d("Test", "MSG Len:" + msgLength);
+
+        byte[] smsg = new byte[msgLength+100];
+        int[] smsglen = new int[1];
+
+        NaCl.sodium().crypto_sign_ed25519(smsg, smsglen, msgToSign.getBytes(), msgLength, sk);
+        Log.d("Test", "sMsg:" + new String(smsg));
+        Log.d("Test", "sMsg len:" + smsglen[0]);
 
         return true;
     }
