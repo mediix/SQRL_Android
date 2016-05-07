@@ -14,8 +14,8 @@ import org.json.JSONObject;
 public class AuthenticationPostBody {
 
     private NameValueBase64 client;
-    private NameValueBase64 server;
-    private NameValueBase64 ids;
+    public NameValueBase64 server;
+    public NameValueBase64 ids;
     private NameValueBase64 pids;
     private NameValueBase64 urs;
 

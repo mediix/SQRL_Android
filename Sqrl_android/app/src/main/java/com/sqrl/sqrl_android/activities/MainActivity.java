@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean testFunc() {
 
+        ClientInfoParam client = new ClientInfoParam("ver", "cmd", "idk", "pidk", "suk", "vuk");
+        AuthenticationPostBody postData = new AuthenticationPostBody(client, "server", "ids", "pids", "urs");
+
         // Needed data
         byte[] imk = new byte[32]; NaCl.sodium().randombytes(imk, 32); Log.d("Test", "imk:" + new BytesToHex().bytesToHex(imk) );
         byte[] salt = new byte[8]; NaCl.sodium().randombytes(salt, 8); Log.d("Test", "salt:" + new BytesToHex().bytesToHex(salt));
@@ -123,6 +126,20 @@ public class MainActivity extends AppCompatActivity {
             pwVerifier[i] = pwHash[i++];
         Log.d("Test", "Verifier:" + new BytesToHex().bytesToHex(pwVerifier) );
 
+
+        // WIC-1
+        String website = "www.example.com";
+
+        // WIC-2, WIC-4 create the pk and sk
+        byte[] sk = new byte[32];
+        byte[] pk = new byte[32];
+        NaCl.sodium().crypto_sign_ed25519_seed_keypair(pk, sk, imk);
+        Log.d("Test", "SK:" + new BytesToHex().bytesToHex(sk));
+        Log.d("Test", "PK:" + new BytesToHex().bytesToHex(pk) );
+
+        // TUL-5
+        String msgTosign = client.getValueBase64url() + postData.server.getNameValueBase64url();
+        NaCl.sodium().crypto_sign_ed25519();
 
         return true;
     }
