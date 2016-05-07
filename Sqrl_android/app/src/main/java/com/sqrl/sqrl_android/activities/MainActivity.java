@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button SignInButton = (Button) findViewById(R.id.sign_in);
         Button RegisterButton = (Button) findViewById(R.id.register_button);
+        Button TestButton = (Button) findViewById(R.id.test_button);
 
         RegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myintent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(myintent);
+            }
+        });
+
+        TestButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                testFunc();
             }
         });
     }
@@ -80,6 +87,44 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean testFunc() {
+
+        // Needed data
+        byte[] imk = new byte[32]; NaCl.sodium().randombytes(imk, 32); Log.d("Test", "imk:" + new BytesToHex().bytesToHex(imk) );
+        byte[] salt = new byte[8]; NaCl.sodium().randombytes(salt, 8); Log.d("Test", "salt:" + new BytesToHex().bytesToHex(salt));
+        int opsLimit = 100000;
+        long memsLimit = 512000;
+        String userPassword = "password";
+
+        byte[] mixKey = new byte[32];
+
+        // mixKey
+        Log.d("Test", "Crypto start hash");
+        NaCl.sodium().crypto_pwhash_scryptsalsa208sha256(mixKey, 32, userPassword.getBytes(), userPassword.length(), salt, opsLimit, memsLimit);
+        Log.d("Test", "Crypto end hash");
+        Log.d("Test", "mixKey:" + new BytesToHex().bytesToHex(mixKey) );
+
+        // create the derived IMK
+        byte[] dImk = new byte[32];
+        int i = 0;
+        for(byte b : mixKey)
+            dImk[i] = (byte) (imk[i] ^ mixKey[i++]);
+
+        Log.d("Test", "dimk:" + new BytesToHex().bytesToHex(dImk) );
+
+        // create the password verifier
+        byte[] pwHash = new byte[32];
+        byte[] pwVerifier = new byte[16];
+        NaCl.sodium().crypto_hash_sha256(pwHash, mixKey, 32);
+        i = 0;
+        for(byte b: pwVerifier)
+            pwVerifier[i] = pwHash[i++];
+        Log.d("Test", "Verifier:" + new BytesToHex().bytesToHex(pwVerifier) );
+
+
+        return true;
     }
 
 
