@@ -1,14 +1,19 @@
 package com.sqrl.sqrl_android.data;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
-import org.junit.Test;
+import org.junit.matchers.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.core.*;
+import static org.hamcrest.text.*;
 import java.util.regex.Pattern;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import com.sqrl.sqrl_android.data.User;
 
 public class UserUnitTest  {
-    public UserUnitTest() {
-
+    @Test
+    public void userTest(){
+        assertNotNull(User.getFirstName());
+        assertNotNull(User.getLastName());
+        assertNotNull(User.getPassword());
     }
+
 }
