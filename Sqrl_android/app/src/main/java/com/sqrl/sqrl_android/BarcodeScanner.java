@@ -49,7 +49,7 @@ public class BarcodeScanner extends AppCompatActivity {
     private boolean barcodeScanned = false;
     private boolean previewing = true;
 
-    String url;
+    String parServer;
 
     static {
         System.loadLibrary("iconv");
@@ -153,7 +153,7 @@ public class BarcodeScanner extends AppCompatActivity {
                     Log.i("<<<<<<Asset Code>>>>> ",
                             "<<<<Bar Code>>> " + sym.getData());
                     String scanResult = sym.getData().trim();
-                    url = scanResult;
+                    parServer = scanResult;
 
 
                     showAlertDialog(scanResult);
@@ -202,7 +202,7 @@ public class BarcodeScanner extends AppCompatActivity {
 
         //Example preparing and sending client login request
         ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
-        AuthenticationPostBody authData = new AuthenticationPostBody(client, url ,"parids", "parpids", "parurs");
+        AuthenticationPostBody authData = new AuthenticationPostBody(client, parServer ,"parids", "parpids", "parurs");
 
         Log.d("main: ", "Client: "+ client.getValueBase64url());
 
