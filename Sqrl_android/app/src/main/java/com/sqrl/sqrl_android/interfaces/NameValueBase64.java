@@ -21,8 +21,8 @@ public abstract class NameValueBase64 {
     public String getValue() {return value;}
 
     public String getValueBase64url() {
-        String output = Base64.encodeToString(value.getBytes(), Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
-        return output;
+            String output = Base64.encodeToString(value.getBytes(), Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING);
+            return output;
     }
 
     /**
