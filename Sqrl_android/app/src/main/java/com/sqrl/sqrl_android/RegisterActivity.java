@@ -46,7 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(getApplicationContext(),MainActivity.class);
+                //Intent myintent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent myintent = new Intent(getApplicationContext(),com.sqrl.sqrl_android.activities.MainActivity.class);
                 startActivity((myintent));
 
                 User newUser = new User();

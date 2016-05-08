@@ -1,2 +1,4 @@
 configurations.create("default")
 artifacts.add("default", file('robosodium-1.0.0.aar'))
+
+task testClasses{}
