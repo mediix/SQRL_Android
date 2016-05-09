@@ -2,6 +2,7 @@ package com.sqrl.sqrl_android;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.ContactsContract;
 
@@ -45,8 +46,21 @@ public class DataSource {
 
     }
 
-
     //select
+    public Cursor getUserPassByFname(String fname) {
+        String[] fnameArg = new String[1];
+        fnameArg[0] = fname;
+
+        return mDatabase.query(
+            DatabaseHelper.TABLE_USERS,
+            DatabaseHelper.projectionPassword,
+            DatabaseHelper.COLUMN_FIRSTNAME,
+            fnameArg,
+            null,
+            null,
+            null
+        );
+    }
 
     //update
 

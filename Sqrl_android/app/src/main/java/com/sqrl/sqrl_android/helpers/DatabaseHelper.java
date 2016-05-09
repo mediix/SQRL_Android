@@ -19,19 +19,33 @@ import java.sql.Struct;
         public static final String COLUMN_FIRSTNAME = "FIRST_NAME";
         public static final String COLUMN_LASTNAME = "LAST_NAME";
         public static final String COLUMN_PASSWORD = "PASSWORD";
+        public static final String COLUMN_SALT = "SALT";
+        public static final String COLUMN_OPSLIMIT = "OPSLIMIT";
+        public static final String COLUMN_MEMLIMIT = "MEMLIMIT";
+        public static final String COLUMN_IMK = "IMK";
 
-        private static final String DB_NAME = "Databaseeeezzz.db";
-        private static final int DB_VERSION = 1;
+        private static final String DB_NAME = "Database.db";
+        private static final int DB_VERSION = 2;
         private static final String DB_CREATE =
                // "CREATE TABLE " + TABLE_USERS + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 //COLUMN_FIRSTNAME + " TEXT)";
                 "CREATE TABLE " + TABLE_USERS + "(" +
                                 COLUMN_ID + " INTEGER PRIMARY KEY, " +
                                 COLUMN_FIRSTNAME + " TEXT, " +
-                                COLUMN_LASTNAME + " TEXT, " +
                                 COLUMN_PASSWORD + " TEXT)";
+//                                COLUMN_PASSWORD + " TEXT, " +
+//                                COLUMN_SALT + " TEXT, " +
+//                                COLUMN_OPSLIMIT + " TEXT, " +
+//                                COLUMN_MEMLIMIT + " TEXT)";
+        private static final String SQL_DELETE_ENTRIES =
+                "DROP TABLE IF EXISTS " + TABLE_USERS;
 
-
+        public static String[] projectionPassword = {
+                COLUMN_PASSWORD,
+                //COLUMN_SALT,
+                //COLUMN_OPSLIMIT,
+                //COLUMN_MEMLIMIT
+        };
 
 
 
@@ -47,7 +61,8 @@ import java.sql.Struct;
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL(SQL_DELETE_ENTRIES);
+            onCreate(db);
         }
     }
 
