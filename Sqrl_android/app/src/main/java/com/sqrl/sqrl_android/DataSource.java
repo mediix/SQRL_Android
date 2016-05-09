@@ -54,12 +54,13 @@ public class DataSource {
         return mDatabase.query(
             DatabaseHelper.TABLE_USERS,
             DatabaseHelper.projectionPassword,
-            DatabaseHelper.COLUMN_FIRSTNAME,
-            fnameArg,
+            DatabaseHelper.COLUMN_FIRSTNAME + " = '" + fname +"'",
+            null,
             null,
             null,
             null
         );
+
     }
 
     //update
