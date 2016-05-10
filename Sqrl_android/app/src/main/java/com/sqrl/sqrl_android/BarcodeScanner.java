@@ -23,7 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.sqrl.sqrl_android.data.ClientInfoParam;
+import com.sqrl.sqrl_android.data.*;
+import com.sqrl.sqrl_android.data.User;
 import com.sqrl.sqrl_android.helpers.AuthenticationPostBody;
 
 import net.sourceforge.zbar.Config;
@@ -157,7 +158,8 @@ public class BarcodeScanner extends AppCompatActivity {
 
 
                     showAlertDialog(scanResult);
-                    showAlertDialog("testing");
+                    //showAlertDialog("testing");
+                    httpSend();
 
                   /*  Toast.makeText(BarcodeScanner.this, scanResult,
                             Toast.LENGTH_SHORT).show();*/
@@ -196,23 +198,23 @@ public class BarcodeScanner extends AppCompatActivity {
 
 
 
-    public void httpSend(View vew) {
+    public void httpSend() {
         //Test the Volley HTTP library to send data
         Log.d("http test", "http test button pressed");
 
         //Example preparing and sending client login request
-        ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
+        ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "ernestop ", "parpidk", "parsuk", "parvuk");
         AuthenticationPostBody authData = new AuthenticationPostBody(client, parServer ,"parids", "parpids", "parurs");
 
         Log.d("main: ", "Client: "+ client.getValueBase64url());
-
+        Log.d("main :", "Username : " + User.getFirstName());
         JSONObject authDataJson = authData.getJsonObject();
 
 //        JSONObject authData = new JSONObject();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
-        String url = "http://putsreq.com/z6KTTHEz6bDCe0St4ZIF";
+        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
+       // String url = "http://putsreq.com/z6KTTHEz6bDCe0St4ZIF";
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, authDataJson,
                 new Response.Listener<JSONObject>() {
