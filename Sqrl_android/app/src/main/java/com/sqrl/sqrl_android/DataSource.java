@@ -42,6 +42,10 @@ public class DataSource {
         values.put(DatabaseHelper.COLUMN_FIRSTNAME,user.getFirstName());
         values.put(DatabaseHelper.COLUMN_LASTNAME,user.getLastName());
         values.put(DatabaseHelper.COLUMN_PASSWORD,user.getPassword());
+        values.put(DatabaseHelper.COLUMN_IMK,user.getImk());
+        values.put(DatabaseHelper.COLUMN_SALT,user.getSalt());
+        values.put(DatabaseHelper.COLUMN_OPSLIMIT,user.getOpsLimit());
+        values.put(DatabaseHelper.COLUMN_MEMLIMIT,user.getMemLimit());
         mDatabase.insert(DatabaseHelper.TABLE_USERS, null, values);
 
     }

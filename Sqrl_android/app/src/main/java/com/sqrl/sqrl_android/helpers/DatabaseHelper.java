@@ -25,7 +25,7 @@ import java.sql.Struct;
         public static final String COLUMN_IMK = "IMK";
 
         private static final String DB_NAME = "Database.db";
-        private static final int DB_VERSION = 4;
+        private static final int DB_VERSION = 7;
         private static final String DB_CREATE =
                // "CREATE TABLE " + TABLE_USERS + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 //COLUMN_FIRSTNAME + " TEXT)";
@@ -33,19 +33,20 @@ import java.sql.Struct;
                                 COLUMN_ID + " INTEGER PRIMARY KEY, " +
                                 COLUMN_FIRSTNAME + " TEXT, " +
                                 COLUMN_LASTNAME + " TEXT," +
-                                COLUMN_PASSWORD + " TEXT)";
-//                                COLUMN_PASSWORD + " TEXT, " +
-//                                COLUMN_SALT + " TEXT, " +
-//                                COLUMN_OPSLIMIT + " TEXT, " +
-//                                COLUMN_MEMLIMIT + " TEXT)";
+//                                COLUMN_PASSWORD + " TEXT)";
+                                COLUMN_IMK + " BINARY(32), " +
+                                COLUMN_PASSWORD + " BINARY(16), " +
+                                COLUMN_SALT + " BINARY(8), " +
+                                COLUMN_OPSLIMIT + " INTEGER, " +
+                                COLUMN_MEMLIMIT + " INTEGER)";
         private static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TABLE_USERS;
 
         public static String[] projectionPassword = {
-                COLUMN_PASSWORD
-                //COLUMN_SALT,
-                //COLUMN_OPSLIMIT,
-                //COLUMN_MEMLIMIT
+                COLUMN_PASSWORD,
+                COLUMN_SALT,
+                COLUMN_OPSLIMIT,
+                COLUMN_MEMLIMIT
         };
 
 
