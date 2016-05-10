@@ -156,6 +156,7 @@ public class BarcodeScanner extends AppCompatActivity {
                     parServer = scanResult;
 
 
+
                     showAlertDialog(scanResult);
                     showAlertDialog("testing");
 

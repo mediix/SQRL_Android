@@ -83,4 +83,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+<<<<<<< HEAD
+=======
+        //Example preparing and sending client login request
+        ClientInfoParam client = new ClientInfoParam("parver", "parcmd", "paridk", "parpidk", "parsuk", "parvuk");
+        AuthenticationPostBody authData = new AuthenticationPostBody(client, "parserver", "parids", "parpids", "parurs");
+
+        Log.d("main: ", "Client: "+ client.getValueBase64url());
+
+        JSONObject authDataJson = authData.getJsonObject();
+
+//        JSONObject authData = new JSONObject();
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+//        String url ="https://2oc3yo4sj9.execute-api.us-west-2.amazonaws.com/dev/api/auth";
+        String url = "http://putsreq.com/z6KTTHEz6bDCe0St4ZIF";
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, authDataJson,
+                new Response.Listener<JSONObject>() {
+                    public void onResponse(JSONObject response) {
+                        Log.d("Volley", "Response is: " + response);
+                    }
+                }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                Log.d("response err", "that didn't work!");
+            }
+        }
+        );
+
+        queue.add(stringRequest);
+    }
+>>>>>>> refs/remotes/origin/JUnitBranch
 }

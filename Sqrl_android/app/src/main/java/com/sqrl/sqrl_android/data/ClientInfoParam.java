@@ -44,8 +44,8 @@ public class ClientInfoParam extends NameValueBase64{
         this.setValue(  this.ver.getNameValueBase64url()    + "\r\n" +
                         this.cmd.getNameValueBase64url()    + "\r\n" +
                         this.idk.getNameValueBase64url()    + "\r\n" +
-                        this.pidk.getNameValueBase64url()       + "\r\n" +
-                        this.suk.getNameValueBase64url()        + "\r\n" +
+                        this.pidk.getNameValueBase64url()   + "\r\n" +
+                        this.suk.getNameValueBase64url()    + "\r\n" +
                         this.vuk.getNameValueBase64url()    );
     }
 }
