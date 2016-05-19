@@ -17,3 +17,9 @@ allprojects {
         jcenter()
     }
 }
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
