@@ -1,17 +1,12 @@
 package com.sqrl.sqrl_android;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.sqrl.sqrl_android.activities.MainActivity;
 
 import  java.sql.SQLException;
 
@@ -51,7 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent myintent = new Intent(getApplicationContext(),MainActivity.class);
+                //Intent myintent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent myintent = new Intent(getApplicationContext(),com.sqrl.sqrl_android.activities.MainActivity.class);
                 startActivity((myintent));
 
                 User newUser = new User();
